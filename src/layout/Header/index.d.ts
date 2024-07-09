@@ -4,7 +4,7 @@ import {LinkProps} from "next/link";
 export type MenuProps = Omit<HeaderMenuProps, "setAnchor" | "anchorEl"> | HeaderLinkItem
 
 interface HeaderMenuProps {
-	icon: ReactElement
+	icon: ReactNode
 	value: string
 	anchorEl: HTMLElement | null
 	setAnchor: (x: HTMLElement | null) => void
@@ -12,7 +12,7 @@ interface HeaderMenuProps {
 }
 
 interface HeaderLinkItem extends LinkProps {
-	icon: ReactElement
+	icon: ReactNode
 	value: string
 	target?: "_self" | "_blank"
 	type?: "icon" | "text"

@@ -1,9 +1,9 @@
-import React, {useRef} from "react";
+import React, {useRef, useEffect, useState} from "react";
 import Link from "next/link";
 import {Box, Menu, MenuItem, Tooltip, Typography} from "@mui/material";
 import {ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
 
-import type {HeaderLinkItem, HeaderMenuProps, MenuProps} from "./index.d";
+import type {HeaderLinkItem, HeaderMenuProps, MenuProps} from "./index";
 
 export const HeaderItem = ({...props}: HeaderMenuProps | HeaderLinkItem) => {
 	if("menuItems" in props) {
@@ -17,16 +17,18 @@ export const HeaderItem = ({...props}: HeaderMenuProps | HeaderLinkItem) => {
 
 const HeaderMenu = ({icon, value, open, setAnchor, menuItems}: HeaderMenuProps) => {
 
-	const anchorId = `${value}-button`
-	const anchorRef = useRef<HTMLAnchorElement>(null)
+	const anchorRef = useRef<HTMLElement>(null)
 
-	console.log(anchorRef.current)
+	// Effect to perform actions when ref changes
+	const [refChange, setRefChange] = useState<number>(0); // State to track ref changes
+	useEffect(() => {
+		setRefChange(refChange + 1);
+	}, [anchorRef.current]); // Dependency on refChange state to trigger effect
 
 	return (
 			<>
-				<Box href={"#"} style={{display: "flex"}}
+				<Box style={{display: "flex"}}
 							ref={anchorRef}
-							id={anchorId}
 							aria-controls={open ? `${value}-menu` : undefined}
 							aria-haspopup="true"
 							aria-expanded={open ? 'true' : undefined}
@@ -42,9 +44,22 @@ const HeaderMenu = ({icon, value, open, setAnchor, menuItems}: HeaderMenuProps) 
 						}
 					</Typography>
 				</Box>
-				<Menu anchorEl={anchorRef.current} open={open} onClose={() => setAnchor(null)}>
+				<Menu
+						anchorEl={anchorRef.current}
+						open={open}
+						onClose={() => setAnchor(null)}
+						sx={{mt: 2}}
+						anchorOrigin={{
+							vertical: 'bottom',
+							horizontal: 'left',
+						}}
+						transformOrigin={{
+							vertical: 'top',
+							horizontal: 'left',
+						}}
+				>
 					{menuItems.map((item) => (
-							<Link key={item.value} {...item}>
+							<Link key={item.value} {...item} style={{textDecoration: "none", ...item.style}}>
 								<MenuItem onClick={e => setAnchor(anchorRef.current)}>{item.value}</MenuItem>
 							</Link>
 					))}

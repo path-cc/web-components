@@ -5,7 +5,7 @@ import {Box, Button, Grid, IconButton, Menu, MenuItem, Tooltip, IconProps} from 
 
 import {HeaderItem} from "./HeaderItem";
 
-import type {HeaderLinkItem, HeaderMenuProps, MenuProps} from "./index.d";
+import type {HeaderLinkItem, HeaderMenuProps, MenuProps} from "./index";
 
 export const DesktopMenu = ({menuItems} : {menuItems: MenuProps[]}) => {
 

@@ -6,7 +6,7 @@ import {
     Home, GitHub, Description, Groups, Email, Help, Group, Info, Grade, Newspaper, Close, Terminal, CalendarMonth, FileDownload
 } from "@mui/icons-material";
 import { HeaderDropdown, HeaderLink, HeaderMainLink } from "./HeaderDropdown";
-import { HeaderLinkItem, HeaderMenuProps } from "./index.d";
+import { HeaderLinkItem, HeaderMenuProps } from "./index";
 
 export const BurgerMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "setAnchor" | "anchorEl"> | HeaderLinkItem)[]}) => {
     const [openDrawer, setOpenDrawer] = useState(false);

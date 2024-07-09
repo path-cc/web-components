@@ -1,13 +1,13 @@
 {
   "name": "@chtc/web-client",
-  "version": "0.0.0-itb.0",
+  "version": "0.0.0-itb.1",
   "description": "PATh Web Components",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "types": "src/index.d.ts",
   "scripts": {
     "test": "jest --coverage --json --outputFile=.github/tests/test-summary.json",
     "build": "tsc",
-    "publish": "npm publish --access public",
+    "publish": "pnpm publish --access public",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
