@@ -1,6 +1,8 @@
 import {ReactNode} from "react";
 import {LinkProps} from "next/link";
 
+export type * from "./Header"
+
 export type MenuProps = Omit<HeaderMenuProps, "setAnchor" | "anchorEl"> | HeaderLinkItem
 
 interface HeaderMenuProps {

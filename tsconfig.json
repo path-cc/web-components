@@ -107,6 +107,7 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react"
   }
 }

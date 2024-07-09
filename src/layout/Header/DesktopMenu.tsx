@@ -1,11 +1,11 @@
 'use client'
 
-import React, {useState, ReactNode, useRef, ComponentType} from "react";
+import {useState, ReactNode, useRef, ComponentType} from "react";
 import {Box, Button, Grid, IconButton, Menu, MenuItem, Tooltip, IconProps} from "@mui/material"
 
 import {HeaderItem} from "./HeaderItem";
 
-import type {HeaderLinkItem, HeaderMenuProps, MenuProps} from "./index";
+import type {HeaderLinkItem, MenuProps} from "./index.d";
 
 export const DesktopMenu = ({menuItems} : {menuItems: MenuProps[]}) => {
 

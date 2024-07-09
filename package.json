@@ -1,19 +1,19 @@
 {
-  "name": "@chtc/web-client",
-  "version": "0.0.0-itb.1",
+  "name": "@chtc/web-components",
+  "version": "0.0.0-1",
   "description": "PATh Web Components",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
   "scripts": {
     "test": "jest --coverage --json --outputFile=.github/tests/test-summary.json",
     "build": "tsc",
-    "publish": "pnpm publish --access public",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "publish": "npm publish --access public",
+    "publish:increment": "npm version prerelease --no-git-tag-version && npm publish --access public"
   },
   "files": [
-    "dist",
-    "src/index.d.ts"
+    "src"
   ],
   "author": "",
   "license": "Apache-2.0",
