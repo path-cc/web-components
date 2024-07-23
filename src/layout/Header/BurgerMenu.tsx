@@ -1,14 +1,14 @@
 'use client';
-import React, {useState} from "react";
-import {Box,Typography, IconButton, Drawer, Divider, List, ListSubheader} from "@mui/material";
+import React, {ReactNode, useState} from "react";
+import {Box, Typography, IconButton, Drawer, Divider, List, ListSubheader} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import {
-    Home, GitHub, Description, Groups, Email, Help, Group, Info, Grade, Newspaper, Close, Terminal, CalendarMonth, FileDownload
+    Close
 } from "@mui/icons-material";
 import { HeaderDropdown, HeaderLink, HeaderMainLink } from "./HeaderDropdown";
 import { HeaderLinkItem, HeaderMenuProps } from "./index";
 
-export const BurgerMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "setAnchor" | "anchorEl"> | HeaderLinkItem)[]}) => {
+export const BurgerMenu = ({icon, menuItems} : {icon: ReactNode, menuItems: (Omit<HeaderMenuProps, "setAnchor" | "anchorEl"> | HeaderLinkItem)[]}) => {
     const [openDrawer, setOpenDrawer] = useState(false);
 
     const handleDrawer = () => {
@@ -25,28 +25,28 @@ export const BurgerMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "set
         </IconButton>
         <Drawer anchor={"right"} open={openDrawer} onClose={handleDrawer} 
             sx={{
-                "& .MuiDrawer-paper": {
-                    boxSizing: "border-box",
-                    width: "100%",
-                    "@media (min-width: 576px)": {
-                        width: "30rem",
-                    }
-                },
-                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
-                backdropFilter: "blur(2px)",
-                WebkitBackdropFilter: "blur(2px)",
-                backgroundColor: "rgba(255, 255, 255, 0.5)",
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: "100%",
+                "@media (min-width: 576px)": {
+                  width: "30rem",
+                }
+              },
+              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
+              backdropFilter: "blur(2px)",
+              WebkitBackdropFilter: "blur(2px)",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
             }}
         >
             <List
-                sx={{margin: "1rem" }}
+                sx={{width: "100%", maxWidth: 360}}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
                 subheader={
                     <ListSubheader component="div" id="nested-list-subheader">
                         <Box style={{display: "flex", flexDirection:"row", justifyContent:"start" }}>
-                            <img src={PelicanLogo} alt={"Pelican Logo"} height={48}/>
-                            <Typography variant={"h5"} pl={1} my={"auto"}>Pelican Platform</Typography>
+                            {icon}
+                            <Typography component={"h5"} pl={1} my={"auto"}>Pelican Platform</Typography>
                             <IconButton
                                 sx={{ml: "auto"}}
                                 edge="start"

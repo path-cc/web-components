@@ -3,11 +3,11 @@
 import {useState, ReactNode, useRef, ComponentType} from "react";
 import {Box, Button, Grid, IconButton, Menu, MenuItem, Tooltip, IconProps} from "@mui/material"
 
-import {HeaderItem} from "./HeaderItem";
+import {HeaderIconLink, HeaderItem} from "./HeaderItem";
 
-import type {HeaderLinkItem, MenuProps} from "./index.d";
+import type {HeaderLinkItem, HeaderMenuProps} from "./index";
 
-export const DesktopMenu = ({menuItems} : {menuItems: MenuProps[]}) => {
+export const DesktopMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "setAnchor" | "anchorEl"> | HeaderLinkItem)[]}) => {
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 

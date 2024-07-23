@@ -1,29 +1,41 @@
-import React, {useRef, useEffect, useState} from "react";
-import Link from "next/link";
-import {Box, Menu, MenuItem, Tooltip, Typography} from "@mui/material";
+import React, {useRef, useEffect, useState, useMemo, FC} from "react";
+import Link, {LinkProps} from "next/link";
+import {
+	Box,
+	Menu,
+	MenuItem,
+	Tooltip,
+	Typography
+} from "@mui/material";
 import {ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
 
 import type {HeaderLinkItem, HeaderMenuProps, MenuProps} from "./index";
 
-export const HeaderItem = ({...props}: HeaderMenuProps | HeaderLinkItem) => {
+export const HeaderItem: FC<HeaderMenuProps | HeaderLinkItem> = ({...props}) => {
 	if("menuItems" in props) {
+		props = props as HeaderMenuProps
 		return <HeaderMenu {...props} />
-	} else if(props.type == "text") {
+	}
+
+	props = props as HeaderLinkItem
+	if((props as HeaderLinkItem).type == "text") {
 		return <HeaderLink {...props} />
 	} else {
 		return <HeaderIconLink {...props} />
 	}
 }
 
-const HeaderMenu = ({icon, value, open, setAnchor, menuItems}: HeaderMenuProps) => {
+const HeaderMenu: FC<HeaderMenuProps> = ({value, anchorEl, setAnchor, menuItems}) => {
 
-	const anchorRef = useRef<HTMLElement>(null)
+	const anchorRef = useRef<HTMLElement | null>(null)
 
 	// Effect to perform actions when ref changes
 	const [refChange, setRefChange] = useState<number>(0); // State to track ref changes
 	useEffect(() => {
 		setRefChange(refChange + 1);
 	}, [anchorRef.current]); // Dependency on refChange state to trigger effect
+
+	const open = useMemo(() => anchorEl == anchorRef.current, [anchorEl, anchorRef.current])
 
 	return (
 			<>
@@ -32,9 +44,9 @@ const HeaderMenu = ({icon, value, open, setAnchor, menuItems}: HeaderMenuProps) 
 							aria-controls={open ? `${value}-menu` : undefined}
 							aria-haspopup="true"
 							aria-expanded={open ? 'true' : undefined}
-							onClick={e => setAnchor(anchorRef.current)}
+							onClick={() => setAnchor(anchorRef.current)}
 				>
-					<Typography id={`${value}-header`} display={"flex"} my={"auto"} pl={2} lineHeight={1} variant={"h6"}>
+					<Typography id={`${value}-header`} display={"flex"} my={"auto"} pl={2} lineHeight={1} component={"h6"}>
 						<Box display={"inline"} my={"auto"}>
 							{value}
 						</Box>
@@ -58,9 +70,9 @@ const HeaderMenu = ({icon, value, open, setAnchor, menuItems}: HeaderMenuProps) 
 							horizontal: 'left',
 						}}
 				>
-					{menuItems.map((item) => (
-							<Link key={item.value} {...item} style={{textDecoration: "none", ...item.style}}>
-								<MenuItem onClick={e => setAnchor(anchorRef.current)}>{item.value}</MenuItem>
+					{menuItems.map(({value, style, href, target}) => (
+							<Link key={value}  style={{textDecoration: "none", ...style}} href={href} target={target}>
+								<MenuItem onClick={() => setAnchor(anchorRef.current)}>{value}</MenuItem>
 							</Link>
 					))}
 				</Menu>
@@ -68,17 +80,18 @@ const HeaderMenu = ({icon, value, open, setAnchor, menuItems}: HeaderMenuProps) 
 	)
 }
 
-const HeaderLink = ({...props} : HeaderLinkItem) => {
+const HeaderLink: FC<HeaderLinkItem> = ({value, href, target, style}) => {
+
 	return (
-			<Link {...props} style={{display: "flex", textDecoration: "none", ...props.style}} >
-				<Typography my={"auto"} pl={2} lineHeight={1} variant={"h6"}>
-					{props.value}
-				</Typography>
-			</Link>
+			<Typography my={"auto"} pl={2} lineHeight={1} component={"h6"}>
+				<Link style={{display: "flex", textDecoration: "none", ...style}} href={href} target={target}>
+						{value}
+				</Link>
+			</Typography>
 	)
 }
 
-const HeaderIconLink = ({...props} : HeaderLinkItem) => {
+const HeaderIconLink: FC<HeaderLinkItem> = ({...props}) => {
 	return (
 			<Link href={props.href} target={props.target}>
 				<Tooltip title={props.value}>
@@ -91,20 +104,22 @@ const HeaderIconLink = ({...props} : HeaderLinkItem) => {
 								marginTop: "2px"
 							}}
 					>
-						{
-							React.cloneElement(props.icon, {
-								fontSize: "large",
-								sx:{
-									":hover": {
-										transform: "scale(1.15)",
-										transition: "transform 0.3s",
-									},
-									marginTop: "2px"
-								}
-							})
-						}
+						<Box
+							fontSize={"large"}
+							sx={{
+								":hover": {
+									transform: "scale(1.15)",
+									transition: "transform 0.3s",
+								},
+								marginTop: "2px"
+							}}
+						>
+							{props.icon}
+						</Box>
 					</Box>
 				</Tooltip>
 			</Link>
 	)
 }
+
+export {HeaderLink, HeaderIconLink}

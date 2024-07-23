@@ -2,16 +2,15 @@
 
 import {useState, useEffect, ReactNode} from "react";
 import {Box, Typography} from "@mui/material"
-import styles from "../../../app/page.module.css"
 import Link from "next/link";
 
-import {MenuProps} from "./index.d";
+import {HeaderLinkItem, HeaderMenuProps, MenuProps} from "./index";
 import {BurgerMenu, DesktopMenu, ImageIcon} from "./index";
 
 export interface HeaderProps {
 	icon: ReactNode,
 	title: string,
-	menuItems: MenuProps[]
+	menuItems: (Omit<HeaderMenuProps, "setAnchor" | "anchorEl"> | HeaderLinkItem)[]
 }
 
 export const Header = ({icon, title, menuItems}: HeaderProps) => {
@@ -20,13 +19,13 @@ export const Header = ({icon, title, menuItems}: HeaderProps) => {
 	let [scrolledTop, setScrolledTop] = useState(true);
 	useEffect(() => {
 		setScrolledTop(window.scrollY < 50);
-		addEventListener("scroll", (event) => {
+		addEventListener("scroll", () => {
 			setScrolledTop(window.scrollY < 50);
 		});
 	}, [])
 
 	return (
-			<Box className={`${styles.header} ${scrolledTop ? styles.headerScrolled : ""}`} style={{
+			<Box style={{
 				display: "flex",
 				justifyContent: "space-between",
 				padding: "1rem",
@@ -39,11 +38,11 @@ export const Header = ({icon, title, menuItems}: HeaderProps) => {
 					<Link href={"/"}>
 						<Box style={{display: "flex"}}>
 							{icon}
-							<Typography variant={"h5"} pl={1} my={"auto"}>{title}</Typography>
+							<Typography component={"h5"} pl={1} my={"auto"}>{title}</Typography>
 						</Box>
 					</Link>
 					<Box sx={{display: {xs: "flex", "md": "none"}}} flexGrow={1}>
-						<BurgerMenu menuItems={menuItems}/>
+						<BurgerMenu icon={icon} menuItems={menuItems}/>
 					</Box>
 					<Box sx={{display: {xs: "none", "md": "flex"}}} flexGrow={1}>
 						<DesktopMenu menuItems={menuItems}/>
