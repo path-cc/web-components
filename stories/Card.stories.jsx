@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '../src/layout/Header/Card.tsx';
+import { Card } from '../src/layout/Header/Card';
 
 export default {
   title: 'Example/Card',
@@ -8,6 +8,7 @@ export default {
     imageSrc: { control: 'text' },
     headerText: { control: 'text' },
     excerptText: { control: 'text' },
+    link: { control: 'text' },
     imagePosition: { 
       control: { type: 'select' },
       options: ['top', 'left'],
@@ -23,6 +24,7 @@ ImageOnTop.args = {
   headerText: 'Card Header',
   excerptText: 'This is an excerpt text for the card component.',
   imagePosition: 'top',
+  link: 'https://osg-htc.org/'
 };
 
 export const ImageOnLeft = Template.bind({});
@@ -31,4 +33,5 @@ ImageOnLeft.args = {
   headerText: 'Card Header',
   excerptText: 'This is an excerpt text for the card component.',
   imagePosition: 'left',
+  link: 'https://osg-htc.org/'
 };
