@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { QuestionMark, Terminal, CalendarMonth, FileDownload, Description } from '@mui/icons-material';
 
-import { HeaderItem } from '../src/layout/Header/HeaderItem';
+import { HeaderItem } from '../src';
 import {fn} from "@storybook/test";
 
 const meta = {
