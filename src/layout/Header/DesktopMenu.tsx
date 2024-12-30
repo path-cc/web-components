@@ -47,4 +47,3 @@ export const DesktopMenu = ({menuItems} : {menuItems: (Omit<HeaderMenuProps, "se
 			</>
 	)
 }
-

@@ -1,19 +1,22 @@
 import type { Preview } from "@storybook/react";// .storybook/preview.js
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
-import { pelicanTheme } from '../src/themes';
+import { pelicanTheme, osgTheme } from '../src/themes';
+
+const decorators = [
+  withThemeFromJSXProvider({
+    themes: {
+      pelican: pelicanTheme,
+      osg: osgTheme
+    },
+    defaultTheme: 'osg',
+    Provider: ThemeProvider,
+    GlobalStyles: CssBaseline,
+  }),
+]
 
 const preview: Preview = {
-  decorators: [
-    withThemeFromJSXProvider({
-      themes: {
-        pelican: pelicanTheme
-      },
-      defaultTheme: 'light',
-      Provider: ThemeProvider,
-      GlobalStyles: CssBaseline,
-    }),
-  ],
+  decorators,
   parameters: {
     controls: {
       matchers: {
