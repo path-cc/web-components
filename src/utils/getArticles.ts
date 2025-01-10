@@ -49,10 +49,6 @@ export async function getArticles(organization: string, repo: string, branch: st
 	)
 }
 
-export function filterArticles(articles: BackendArticle[], publish_on: website, type: article_type): BackendArticle[]{
-	return articles.filter((x: BackendArticle) => x?.publish_on && x.publish_on.includes(publish_on) && x.type == type)
-}
-
 export async function getTree(organization: string, repo: string, branch: string): Promise<GitTree> {
 	const url = `https://api.github.com/repos/${organization}/${repo}/git/trees/${branch}?recursive=1`
 	const res = await fetch(url)
