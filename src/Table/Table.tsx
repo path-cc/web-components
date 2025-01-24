@@ -16,8 +16,8 @@ import { TableProps } from "../types";
 const Table = ({
   headers,
   data,
-  footerData,
-  cellRenderer,
+  footerData = [],
+  cellRenderer = (x) => x.toLocaleString(),
   containerSx,
   tableSx,
   headSx,
@@ -29,25 +29,25 @@ const Table = ({
   footerSx,
   footerRowSx,
   footerCellSx,
-  sortable,
-  defaultSortDirection,
-  defaultSortColumn,
-  pagination,
-  pageSize,
-  rowsPerPageOptions,
+  sortable = false,
+  defaultSortDirection = "asc",
+  defaultSortColumn = 0,
+  pagination = false,
+  pageSize = -1,
+  rowsPerPageOptions = [],
 }: TableProps) => {
   const [page, setPage] = useState(0);
   // -1 rows per page means show all rows
-  const [rowsPerPage, setRowsPerPage] = useState(pageSize ?? -1);
+  const [rowsPerPage, setRowsPerPage] = useState(pageSize);
 
   // Default to ascending order
-  const [order, setOrder] = useState<"asc" | "desc">(
-    defaultSortDirection ?? "asc"
-  );
+  const [order, setOrder] = useState<"asc" | "desc">(defaultSortDirection);
 
   // Default to first column for immediate sorting
   const [orderBy, setOrderBy] = useState(
-    defaultSortColumn ? headers.indexOf(defaultSortColumn) : 0
+    typeof defaultSortColumn === "number"
+      ? defaultSortColumn
+      : headers.indexOf(defaultSortColumn)
   );
 
   // We keep track of this because we want to show the sort direction only if
@@ -120,7 +120,7 @@ const Table = ({
                     direction={order}
                     onClick={() => handleSort(i)}
                   >
-                    {header}
+                    <span>{header}</span>
                   </TableSortLabel>
                 )}
               </TableCell>
@@ -130,22 +130,24 @@ const Table = ({
         <TableBody sx={{ overflowY: "auto", ...bodySx }}>
           {
             // data rows
-            (!pagination ? sortedData : sortedData)
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, i) => (
-                <TableRow key={i} sx={bodyRowSx}>
-                  {row.map((cell, j) => (
-                    <TableCell key={j} sx={bodyCellSx}>
-                      {cellRenderer
-                        ? cellRenderer(cell, headers[j], j, i)
-                        : cell.toLocaleString()}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
+            (!pagination
+              ? sortedData
+              : sortedData.slice(
+                  page * rowsPerPage,
+                  page * rowsPerPage + rowsPerPage
+                )
+            ).map((row, i) => (
+              <TableRow key={i} sx={bodyRowSx}>
+                {row.map((cell, j) => (
+                  <TableCell key={j} sx={bodyCellSx}>
+                    {cellRenderer(cell, headers[j], j, i)}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))
           }
           <TableRow sx={footerRowSx}>
-            {footerData?.map((cell, i) => (
+            {footerData.map((cell, i) => (
               // footer cells
               <TableCell key={i} sx={footerCellSx}>
                 {formatFooterCell(cell)}
@@ -162,7 +164,7 @@ const Table = ({
                 onPageChange={handlePageChange}
                 page={page}
                 rowsPerPage={rowsPerPage}
-                rowsPerPageOptions={rowsPerPageOptions ?? []}
+                rowsPerPageOptions={rowsPerPageOptions}
                 showFirstButton
                 showLastButton
                 onRowsPerPageChange={handleRowsPerPageChange}

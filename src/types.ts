@@ -118,7 +118,7 @@ export interface TableProps {
   /**
    * The default column to sort by. The first column by default.
    */
-  defaultSortColumn?: string;
+  defaultSortColumn?: string | number;
 
   /**
    * Whether or not the table is paginated. False by default.
