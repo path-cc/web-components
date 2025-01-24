@@ -1,1 +1,1 @@
-export { default, type PieChartData } from "./PieChart";
+export { default } from "./PieChart";
