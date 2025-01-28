@@ -35,6 +35,7 @@ const Table = ({
   pagination = false,
   pageSize = -1,
   rowsPerPageOptions = [],
+  showSkipButtons = false,
 }: TableProps) => {
   const [page, setPage] = useState(0);
   // -1 rows per page means show all rows
@@ -165,8 +166,8 @@ const Table = ({
                 page={page}
                 rowsPerPage={rowsPerPage}
                 rowsPerPageOptions={rowsPerPageOptions}
-                showFirstButton
-                showLastButton
+                showFirstButton={showSkipButtons}
+                showLastButton={showSkipButtons}
                 onRowsPerPageChange={handleRowsPerPageChange}
               />
             )
