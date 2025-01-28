@@ -5,7 +5,7 @@ import {
   Legend,
   Plugin,
 } from "chart.js";
-import { Chart, ChartProps } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import Color from "colorjs.io";
 
 import { Box } from "@mui/material";
@@ -33,7 +33,7 @@ const PieChart = (props: PieChartData) => {
     ],
   };
 
-  const options: ChartProps<"pie"> = {
+  const options = {
     type: "pie",
     data,
     options: {
@@ -56,7 +56,7 @@ const PieChart = (props: PieChartData) => {
 
   return (
     <Box bgcolor={bgColor} width="100%" height="100%">
-      <Chart {...options} />
+      <Pie {...options} />
       <div id="pie-chart-legend" />
     </Box>
   );

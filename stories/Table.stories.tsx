@@ -42,7 +42,7 @@ export const Checkered: Story = {
   },
 };
 
-export const Link: Story = {
+export const WithLinkCells: Story = {
   args: {
     sortable: true,
     defaultSortDirection: "desc",
@@ -106,7 +106,7 @@ export const Pagination: Story = {
   },
 };
 
-export const HeightAndPagination: Story = {
+export const PaginationWithHeight: Story = {
   args: {
     sortable: true,
     defaultSortDirection: "desc",
@@ -121,7 +121,7 @@ export const HeightAndPagination: Story = {
   },
 };
 
-export const CustomPagination: Story = {
+export const PaginationWithCustomizableRows: Story = {
   args: {
     sortable: true,
     defaultSortDirection: "desc",
@@ -136,31 +136,38 @@ export const CustomPagination: Story = {
   },
 };
 
-const fullStyleThinBorder = "1px solid rgb(138, 138, 138, 0.2)";
-const fullStyleThickBorder = "1px solid rgb(0, 0, 0)";
+export const PaginationWithSkipButtons: Story = {
+  args: {
+    showSkipButtons: true,
+    ...Pagination.args,
+  },
+};
 
-export const FullStyle: Story = {
+const thinBorder = "1px solid rgb(138, 138, 138, 0.2)";
+const thickBorder = "1px solid rgb(0, 0, 0)";
+
+export const Styled: Story = {
   args: {
     sortable: true,
     defaultSortDirection: "desc",
     defaultSortColumn: "Jobs Ran",
     headCellSx: {
-      ...borderHelper(fullStyleThinBorder, fullStyleThinBorder, "0.5rem"),
+      ...borderHelper(thinBorder, thinBorder, "0.5rem"),
       bgcolor: "#f5f5f5",
-      borderTop: fullStyleThinBorder,
-      borderBottom: fullStyleThickBorder,
+      borderTop: thinBorder,
+      borderBottom: thickBorder,
       fontWeight: "bold",
     },
     footerCellSx: {
       bgcolor: "#f5f5f5",
-      borderTop: fullStyleThickBorder,
-      borderBottom: fullStyleThickBorder,
-      ...borderHelper(fullStyleThinBorder, fullStyleThinBorder, "", "0.5rem"),
+      borderTop: thickBorder,
+      borderBottom: thickBorder,
+      ...borderHelper(thinBorder, thinBorder, "", "0.5rem"),
       fontWeight: "bold",
     },
     bodyCellSx: {
-      borderBottom: fullStyleThinBorder,
-      ...borderHelper(fullStyleThinBorder, fullStyleThinBorder),
+      borderBottom: thinBorder,
+      ...borderHelper(thinBorder, thinBorder),
     },
     footerData: [
       <Box display="flex" justifyContent="space-between">
@@ -200,3 +207,12 @@ function borderHelper(
     },
   };
 }
+
+export const StyledWithHeight: Story = {
+  args: {
+    ...Styled.args,
+    containerSx: {
+      height: 400,
+    },
+  },
+};
