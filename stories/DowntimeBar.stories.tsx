@@ -36,3 +36,10 @@ export const ManySegments: Story = {
 	},
 }
 
+export const DefinedSVGProps: Story = {
+	args: {
+		data: defaultDowntimeData,
+		width: 100,
+		height: 100
+	},
+}

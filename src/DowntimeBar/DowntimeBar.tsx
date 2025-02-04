@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 
-interface DowntimeBarProps {
+interface DowntimeBarProps extends React.SVGProps<SVGSVGElement> {
 	data: boolean[];
 	red?: string;
 	green?: string;
@@ -12,9 +12,10 @@ interface DowntimeBarProps {
  * @param data
  * @param red
  * @param green
+ * @param svgProps
  * @constructor
  */
-const DowntimeBar = ({ data, red="red", green="green" }: DowntimeBarProps) => {
+const DowntimeBar = ({ data, red="red", green="green", ...svgProps }: DowntimeBarProps) => {
 
 	const containerRef = useRef<SVGSVGElement>(null);
 	const [width, setWidth] = useState(0);
@@ -31,7 +32,7 @@ const DowntimeBar = ({ data, red="red", green="green" }: DowntimeBarProps) => {
 	)
 
 	return (
-			<svg ref={containerRef}>
+			<svg ref={containerRef} {...svgProps}>
 				{data.map((v, i) => (
 						<rect
 								key={i}
