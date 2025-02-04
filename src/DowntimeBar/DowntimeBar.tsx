@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface DowntimeBarProps {
 	data: boolean[];
-	red: string;
-	green: string;
+	red?: string;
+	green?: string;
 }
 
 /**
