@@ -10,9 +10,10 @@ export interface ArticleCardProps {
   article: BackendArticle;
 }
 
-type website = "htcondor" | "path" | "osg" | "chtc" | "pelican";
-type tag = "chtc_featured_article";
-type article_type = "news" | "user";
+export type website = "htcondor" | "path" | "osg" | "chtc" | "pelican"
+export type tag = "chtc_featured_article"
+export type article_type = "news" | "user";
+
 
 export interface Image {
   path: string;
