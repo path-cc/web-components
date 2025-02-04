@@ -43,3 +43,9 @@ export const DefinedSVGProps: Story = {
 		height: 100
 	},
 }
+
+export const UndefinedValues: Story = {
+	args: {
+		data: [true, false, undefined, true, false, undefined, true, false, undefined, true]
+	},
+}
