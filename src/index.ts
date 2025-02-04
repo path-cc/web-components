@@ -4,4 +4,5 @@ export { default as TopStyledBlock } from "./TopStyledBlock";
 export { default as Article } from "./Article";
 export { default as PieChart } from "./PieChart";
 export { default as Table } from "./Table";
+export { default as DowntimeBar } from "./DowntimeBar";
 export * from './utils';
