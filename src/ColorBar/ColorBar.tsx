@@ -95,8 +95,8 @@ const AdvancedColorBar = ({ data, containerHeight, containerWidth }: AdvancedCol
 							<Tooltip title={title} key={i}>
 								<rect
 										key={i}
-										x={x * widthRatio}
-										width={width * widthRatio}
+										x={Math.floor(x * widthRatio)}
+										width={Math.ceil(width * widthRatio)}
 										y={0}
 										height={containerHeight}
 										{...props}
@@ -120,9 +120,9 @@ const SimpleColorBar = ({ containerWidth, containerHeight, data, red=r[500], gre
 				{data.map((v, i) => {
 					return <rect
 							key={i}
-							x={i * containerWidth / data.length}
+							x={Math.floor(i * containerWidth / data.length)}
+							width={Math.ceil(containerWidth / data.length)}
 							y={0}
-							width={containerWidth / data.length}
 							height={containerHeight}
 							fill={v == undefined ? grey : v ? green : red}
 					/>

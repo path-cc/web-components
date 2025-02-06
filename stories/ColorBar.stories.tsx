@@ -34,7 +34,7 @@ export const CustomColors: Story = {
 
 export const ManySegments: Story = {
 	args: {
-		data: Array.from({ length:100 }, () => Math.random() >= 0.5)
+		data: Array.from({ length:7 }, () => Math.random() >= 0.5)
 	},
 }
 
