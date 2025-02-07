@@ -1,5 +1,6 @@
 import { SxProps } from "@mui/material";
 import { ReactElement } from "react";
+export * from "./TimeBar"
 
 /**
  * Article Types

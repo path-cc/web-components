@@ -5,4 +5,5 @@ export { default as Article } from "./Article";
 export { default as PieChart } from "./PieChart";
 export { default as Table } from "./Table";
 export { default as ColorBar } from "./ColorBar";
+export { default as TimeBar } from "./TimeBar";
 export * from './utils';
