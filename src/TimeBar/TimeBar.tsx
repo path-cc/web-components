@@ -48,7 +48,7 @@ const TimeBar = ({points, ranges, svgProps}: TimeBarProps) => {
 				onClick: () => r.onClick?.(r)
 			}
 		})
-	}, [])
+	}, [ranges])
 
 	const pointData = useMemo(() => {
 		return points.map((p) => {
@@ -60,7 +60,7 @@ const TimeBar = ({points, ranges, svgProps}: TimeBarProps) => {
 				onClick: () => p.onClick?.(p)
 			}
 		})
-	}, [])
+	}, [points])
 
 	return <ColorBar data={[...rangeData, ...pointData]} {...svgProps} />
 }
