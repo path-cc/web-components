@@ -120,7 +120,7 @@ export interface TableProps {
   /**
    * The default column to sort by. The first column by default.
    */
-  defaultSortColumn?: string;
+  defaultSortColumn?: string | number;
 
   /**
    * Whether or not the table is paginated. False by default.
@@ -135,4 +135,21 @@ export interface TableProps {
    * default.
    */
   rowsPerPageOptions?: number[];
+  /**
+   * Whether or not to show the pagination buttons to skip to the first and last
+   * pages. False by default.
+   */
+  showSkipButtons?: boolean;
+}
+
+/**
+ * Big Number Types
+ */
+
+export interface BigNumberProps {
+  title: string;
+  value: string;
+  data: { x: number; y: number }[];
+  color?: string;
+  opacity?: number;
 }
