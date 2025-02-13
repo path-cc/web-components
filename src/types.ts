@@ -1,6 +1,6 @@
 import { SxProps } from "@mui/material";
 import { ReactElement } from "react";
-export * from "./TimeBar"
+export * from "./TimeBar";
 
 /**
  * Article Types
@@ -11,10 +11,9 @@ export interface ArticleCardProps {
   article: BackendArticle;
 }
 
-export type website = "htcondor" | "path" | "osg" | "chtc" | "pelican"
-export type tag = "chtc_featured_article"
+export type website = "htcondor" | "path" | "osg" | "chtc" | "pelican";
+export type tag = "chtc_featured_article";
 export type article_type = "news" | "user";
-
 
 export interface Image {
   path: string;
@@ -135,4 +134,33 @@ export interface TableProps {
    * default.
    */
   rowsPerPageOptions?: number[];
+}
+
+/**
+ * Staff card types
+ * copied from Pelican website
+ */
+
+export type Staff = StaffBase & {
+  [key in StaffOrganizations]?: Partial<StaffBase>;
+};
+
+export type StaffOrganizations =
+  | "htcondor"
+  | "path"
+  | "osg"
+  | "chtc"
+  | "pelican";
+
+export interface StaffBase {
+  name: string;
+  image: string;
+  title: string;
+  website?: string;
+  institution?: string;
+  promoted?: boolean;
+  weight?: number;
+  description?: string;
+  status: "Staff" | "Student" | "Past";
+  organizations: StaffOrganizations[];
 }
