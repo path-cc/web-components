@@ -1,1 +1,6 @@
-export { default } from "./StaffCard";
+export {
+  default,
+  type Staff,
+  type StaffBase,
+  type StaffOrganizations,
+} from "./StaffCard";

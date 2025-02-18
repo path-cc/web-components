@@ -1,4 +1,4 @@
-import { Staff } from "src/types";
+import { Staff } from "src";
 
 export const defaultStaff: Staff = {
   name: "John Doe",
