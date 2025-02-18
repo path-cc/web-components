@@ -1,4 +1,4 @@
-import { BigNumber } from "../src/BigNumber";
+import { BigNumber } from "../src";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof BigNumber> = {

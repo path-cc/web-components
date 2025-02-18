@@ -1,1 +1,1 @@
-export { default as BigNumber } from "./BigNumber";
+export { default, type BigNumberProps } from "./BigNumber";

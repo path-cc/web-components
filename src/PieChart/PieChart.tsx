@@ -7,11 +7,26 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import Color from "colorjs.io";
-
 import { Box } from "@mui/material";
-import { PieChartData } from "../types";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+/**
+ * Pie Chart Types
+ */
+
+export interface PieChartData {
+  showLegend?: boolean;
+  bgColor?: string;
+  textColor?: string;
+
+  sortData?: boolean;
+  axisLabel: string;
+  data: {
+    label: string;
+    value: number;
+  }[];
+}
 
 const PieChart = (props: PieChartData) => {
   const bgColor = props.bgColor ?? "#fff";

@@ -11,7 +11,86 @@ import {
   TableSortLabel,
 } from "@mui/material";
 
-import { TableProps } from "../types";
+export interface TableProps {
+  /**
+   * The headers of the table.
+   */
+  headers: string[];
+  /**
+   * The data of the table.
+   *
+   * Each element in the array is a row, and each row contains cells of strings
+   * or numbers.
+   */
+  data: (string | number)[][];
+  /**
+   * The footer data that appears at the bottom of the table.
+   *
+   * This data is not sorted or paginated, and can include normal React elements.
+   */
+  footerData?: (string | number | ReactElement)[];
+
+  /**
+   * A function that takes in a cell, the column header, the column index, and
+   * the row index and returns the inner component of the cell to render.
+   *
+   * If the footer is not a React element, it will also be passed to this
+   * function.
+   */
+  cellRenderer?: (
+    cell: string | number,
+    columnHeader: string,
+    column: number,
+    row: number
+  ) => React.ReactNode;
+
+  containerSx?: SxProps;
+  tableSx?: SxProps;
+
+  headSx?: SxProps;
+  headRowSx?: SxProps;
+  headCellSx?: SxProps;
+
+  footerSx?: SxProps;
+  footerRowSx?: SxProps;
+  footerCellSx?: SxProps;
+
+  bodySx?: SxProps;
+  bodyRowSx?: SxProps;
+  bodyCellSx?: SxProps;
+
+  /**
+   * Whether or not the table is sortable. False by default.
+   */
+  sortable?: boolean;
+  /**
+   * Sort direction of the table. Ascending by default.
+   */
+  defaultSortDirection?: "asc" | "desc";
+  /**
+   * The default column to sort by. The first column by default.
+   */
+  defaultSortColumn?: string | number;
+
+  /**
+   * Whether or not the table is paginated. False by default.
+   */
+  pagination?: boolean;
+  /**
+   * The number of rows per page. 10 by default.
+   */
+  pageSize?: number;
+  /**
+   * The options for the number of rows per page. No options (empty array) by
+   * default.
+   */
+  rowsPerPageOptions?: number[];
+  /**
+   * Whether or not to show the pagination buttons to skip to the first and last
+   * pages. False by default.
+   */
+  showSkipButtons?: boolean;
+}
 
 const Table = ({
   headers,

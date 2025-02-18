@@ -4,7 +4,7 @@
  * Optionally superimposed over a line graph filled in with a color
  */
 
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-moment";
@@ -24,8 +24,6 @@ import {
 } from "chart.js";
 import Color from "colorjs.io";
 
-import type { BigNumberProps } from "../types";
-
 ChartJS.register(
   TimeScale,
   CategoryScale,
@@ -38,6 +36,18 @@ ChartJS.register(
   Colors,
   Filler
 );
+
+/**
+ * Big Number Types
+ */
+
+export interface BigNumberProps {
+  title: string;
+  value: string;
+  data: { x: number; y: number }[];
+  color?: string;
+  opacity?: number;
+}
 
 const BigNumber = ({
   title,
