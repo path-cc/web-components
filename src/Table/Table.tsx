@@ -1,6 +1,7 @@
 import { ReactElement, useState } from "react";
 import {
   Table as MUITable,
+  SxProps,
   TableBody,
   TableCell,
   TableContainer,
