@@ -3,31 +3,14 @@ import Image from "next/image";
 
 /**
  * Staff card types
- * copied from Pelican website
+ * copied loosely from Pelican website
  */
 
-export type Staff = StaffBase & {
-  [key in StaffOrganizations]?: Partial<StaffBase>;
-};
-
-export type StaffOrganizations =
-  | "htcondor"
-  | "path"
-  | "osg"
-  | "chtc"
-  | "pelican";
-
-export interface StaffBase {
+export interface Staff {
   name: string;
   image: string;
   title: string;
-  website?: string;
   institution?: string;
-  promoted?: boolean;
-  weight?: number;
-  description?: string;
-  status: "Staff" | "Student" | "Past";
-  organizations: StaffOrganizations[];
 }
 
 const StaffCard = ({
