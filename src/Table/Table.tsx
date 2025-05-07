@@ -43,7 +43,7 @@ export interface TableProps {
     columnHeader: string,
     column: number,
     row: number
-  ) => React.ReactNode;
+  ) => ReactElement;
 
   containerSx?: SxProps;
   tableSx?: SxProps;
@@ -97,7 +97,7 @@ const Table = ({
   headers,
   data,
   footerData = [],
-  cellRenderer = (x) => x.toLocaleString(),
+  cellRenderer = (x) => <span>{x.toLocaleString()}</span>,
   containerSx,
   tableSx,
   headSx,

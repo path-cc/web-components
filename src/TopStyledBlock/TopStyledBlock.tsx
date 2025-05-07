@@ -1,8 +1,8 @@
-import {ReactNode} from "react";
+import {ReactElement} from "react";
 import {Box} from "@mui/material";
 
 export interface TopStyledBlockProps {
-	children: ReactNode
+	children: ReactElement
 	width?: string
 	offset?: string
 	height?: string
