@@ -1,5 +1,5 @@
 import {useMemo} from "react";
-import {ColorBar} from "../index";
+import ColorBar from "../ColorBar/ColorBar";
 
 interface BaseProps {
 	fill: string;
