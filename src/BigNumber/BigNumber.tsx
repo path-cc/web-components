@@ -7,7 +7,7 @@
 import { useMemo } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { Line } from "react-chartjs-2";
-import "chartjs-adapter-moment";
+import "chartjs-adapter-date-fns";
 import {
   CategoryScale,
   Chart as ChartJS,
