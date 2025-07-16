@@ -3,6 +3,7 @@ const path = require("path");
 
 module.exports = {
 	entry: "./src/minimal.ts",
+	mode: "production",
 	module: {
 		rules: [
 			{
@@ -11,6 +12,9 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 		],
+	},
+	experiments: {
+		outputModule: true,
 	},
 	resolve: {
 		extensions: [".tsx", ".ts", ".js"],
@@ -21,8 +25,7 @@ module.exports = {
 		path: path.resolve(__dirname, "dist"),
 		globalObject: "this",
 		library: {
-			name: "CHTCWebComponents",
-			type: "umd",
+			type: "modern-module",
 		},
 	},
 	externals: {
