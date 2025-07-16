@@ -28,6 +28,7 @@ module.exports = {
 			type: "modern-module",
 		},
 	},
+	externalsType: 'module',
 	externals: {
 		react: "React", // Case matters here
 		"react-dom": "ReactDOM", // Case matters here
