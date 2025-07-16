@@ -30,7 +30,7 @@ module.exports = {
 	},
 	externalsType: 'module',
 	externals: {
-		react: "react", // Case matters here
-		"react-dom": "react-dom", // Case matters here
+		react: "https://esm.sh/react", // Case matters here
+		"react-dom": "https://esm.sh/react-dom", // Case matters here
 	},
 };
