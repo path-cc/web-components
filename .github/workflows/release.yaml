@@ -26,6 +26,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Bundle project
+        run: npm run bundle
+
       - name: Publish to npm
         run: npm run publish:increment
         env:
