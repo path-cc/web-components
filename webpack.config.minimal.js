@@ -25,12 +25,11 @@ module.exports = {
 		path: path.resolve(__dirname, "dist"),
 		globalObject: "this",
 		library: {
-			type: "modern-module",
+			type: "umd"
 		},
 	},
-	externalsType: 'module',
 	externals: {
-		react: "https://esm.sh/react", // Case matters here
-		"react-dom": "https://esm.sh/react-dom", // Case matters here
+		react: "React", // Case matters here
+		"react-dom": "ReactDOM", // Case matters here
 	},
 };
