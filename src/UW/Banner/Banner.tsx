@@ -1,8 +1,9 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import {ReactNode} from "react";
 
-const Banner = ({children}) => {
+const Banner = ({children}: {children: ReactNode}) => {
 	return (
 			<Box
 					sx={{
