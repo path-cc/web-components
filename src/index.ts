@@ -8,4 +8,7 @@ export { default as ColorBar } from "./ColorBar";
 export { default as BigNumber, type BigNumberProps } from "./BigNumber";
 export { default as TimeBar } from "./TimeBar";
 export { default as StaffCard, type Staff } from "./StaffCard";
+export { default as UWBanner } from "./UW/Banner";
+export { default as UWLogo } from "./UW/Logo";
+export { default as UWFooter } from "./UW/Footer";
 export * from "./utils";
