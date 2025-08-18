@@ -40,19 +40,19 @@ const Footer = ({menu, contact, accessibilityEmail} : FooterProps) => {
 			>
 				<Container>
 					<Grid container spacing={2} justifyContent={"space-evenly"}>
-						<Grid item>
+						<Grid>
 							<Box display={"flex"} alignItems={"center"}>
 								<Logo height={100} fill={theme.palette.secondary.contrastText} />
 							</Box>
 						</Grid>
 						{
 							menu.map((menuProps, i) => (
-								<Grid item key={i}>
+								<Grid key={i}>
 									<FooterMenu {...menuProps} />
 								</Grid>
 							))
 						}
-						<Grid item>
+						<Grid>
 							<ContactCard {...contact}/>
 						</Grid>
 					</Grid>
