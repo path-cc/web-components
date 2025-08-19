@@ -41,7 +41,7 @@ export const SmallWithMaxHeight: Story = {
   }
 };
 
-export const WithCustomThumbnail: Story = {
+export const CustomThumbnail: Story = {
   args: {
     presentation: {
       ...defaultPresentation,
@@ -69,7 +69,7 @@ export const SquareImage: Story = {
   }
 };
 
-export const WithCardSx: Story = {
+export const CardSx: Story = {
   args: {
     presentation: defaultPresentation,
     href: "#",
