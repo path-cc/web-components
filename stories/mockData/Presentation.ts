@@ -28,7 +28,7 @@ const defaultPresentation: Presentation = {
   presenter: "Douglas Thain",
   event: "HTC25",
   date: "2025-06-04",
-  content: markdownContent,
+  description: markdownContent,
   tags: ["Research Computing", "Workflow"],
   youtubeId: "3gubQ4-B2Kw",
   links: [{

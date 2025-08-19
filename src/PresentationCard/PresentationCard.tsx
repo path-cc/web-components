@@ -55,7 +55,7 @@ const PresentationCard = ({
     presenter,
     event,
     date,
-    content,
+    description,
     tags = [],
     thumbnail,
     youtubeId,
@@ -81,7 +81,7 @@ const PresentationCard = ({
     }
   }
 
-  useEffect(updateGradientVisibility, [content, maxDescriptionHeight]);
+  useEffect(updateGradientVisibility, [description, maxDescriptionHeight]);
   useLayoutEffect(() => {
     // called on component mount, adds event listener for resize
     // ensure we only run this effect if maxDescriptionHeight is defined
@@ -141,7 +141,7 @@ const PresentationCard = ({
           onClick={() => setShowGradient(false)}
         >
           <CustomMarkdown>
-            {content}
+            {description}
           </CustomMarkdown>
           {showGradient && (
             <div

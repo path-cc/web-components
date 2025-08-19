@@ -42,7 +42,7 @@ const CustomMarkdown = ({ children }: { children?: string | null }) => (
   </Markdown>
 );
 
-const Presentation = ({ title, presenter, event, date, content, youtubeId, tags = [], links = [] }: PresentationType) => {
+const Presentation = ({ title, presenter, event, date, description, youtubeId, tags = [], links = [] }: PresentationType) => {
   const formattedDate = new Date(date).toLocaleString("en-US", {
     year: "numeric",
     month: "long",
@@ -74,7 +74,7 @@ const Presentation = ({ title, presenter, event, date, content, youtubeId, tags 
       )}
 
       <CustomMarkdown>
-        {content}
+        {description}
       </CustomMarkdown>
 
       <Stack direction="row" spacing={1} sx={{ mb: 1, flexWrap: "wrap" }}>

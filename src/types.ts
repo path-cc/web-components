@@ -48,7 +48,7 @@ export interface Presentation {
   presenter: string;
   event?: string;
   date: string;
-  content: string;
+  description: string;
   tags?: string[];
   links?: {
     name: string;
