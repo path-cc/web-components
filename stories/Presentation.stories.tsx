@@ -25,6 +25,7 @@ export const WithoutVideo: Story = {
       src: 'https://placehold.co/1280x720',
       alt: 'Custom Thumbnail',
     },
+    youtubeId: undefined,
   },
 };
 

@@ -58,6 +58,7 @@ const PresentationCard = ({
     content,
     tags = [],
     thumbnail,
+    youtubeId,
   },
   maxDescriptionHeight,
   href,
@@ -90,8 +91,8 @@ const PresentationCard = ({
     return () => window.removeEventListener("resize", updateGradientVisibility);
   }, [maxDescriptionHeight]);
 
-  const thumbnailSrc = "src" in thumbnail ? thumbnail.src : `https://img.youtube.com/vi/${thumbnail.youtubeId}/hqdefault.jpg`;
-  const thumbnailAlt = "alt" in thumbnail ? (thumbnail.alt ?? title) : title;
+  const thumbnailSrc = thumbnail?.src ?? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
+  const thumbnailAlt = thumbnail?.alt ?? title;
 
   return (
     <Card sx={cardSx ?? {maxWidth: 400}}>

@@ -55,10 +55,9 @@ export interface Presentation {
     value: string;
   }[];
 
-  thumbnail: {
+  thumbnail?: {
     src: string;
     alt: string;
-  } | {
-    youtubeId: string;
-  };
+  } | null;
+  youtubeId?: string;
 }

@@ -30,9 +30,7 @@ const defaultPresentation: Presentation = {
   date: "2025-06-04",
   content: markdownContent,
   tags: ["Research Computing", "Workflow"],
-  thumbnail: {
-    youtubeId: "3gubQ4-B2Kw",
-  },
+  youtubeId: "3gubQ4-B2Kw",
   links: [{
     name: "Public slides",
     value: "https://agenda.hep.wisc.edu/event/2297/contributions/33770/",

@@ -42,7 +42,7 @@ const CustomMarkdown = ({ children }: { children?: string | null }) => (
   </Markdown>
 );
 
-const Presentation = ({ title, presenter, event, date, content, thumbnail, tags = [], links = [] }: PresentationType) => {
+const Presentation = ({ title, presenter, event, date, content, youtubeId, tags = [], links = [] }: PresentationType) => {
   const formattedDate = new Date(date).toLocaleString("en-US", {
     year: "numeric",
     month: "long",
@@ -63,10 +63,10 @@ const Presentation = ({ title, presenter, event, date, content, thumbnail, tags 
         </Box>
       </Box>
 
-      {"youtubeId" in thumbnail && (
+      {youtubeId && (
         <Box display={"flex"} justifyContent={"center"} pb={2}>
           <iframe
-            src={`https://www.youtube.com/embed/${thumbnail.youtubeId}`}
+            src={`https://www.youtube.com/embed/${youtubeId}`}
             style={{ width: "100%", height: "auto", maxWidth: "640px", aspectRatio: "16/9" }}
             allowFullScreen
           ></iframe>
