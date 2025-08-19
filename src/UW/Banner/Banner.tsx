@@ -8,7 +8,8 @@ const Banner = ({children}: {children?: ReactNode}) => {
 			<Box
 					sx={{
 						width: '100%',
-						backgroundColor: 'primary.main'
+						backgroundColor: 'primary.main',
+						py: 1
 					}}
 			>
 				<Container>

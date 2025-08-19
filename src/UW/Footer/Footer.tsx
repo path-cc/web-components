@@ -23,13 +23,13 @@ const Footer = ({menu, contact, accessibilityEmail} : FooterProps) => {
 	return (
 		<Box
 			width={"100%"}
-			mt={4}
 		>
 			<Box
 				sx={{
 					width: '100%',
 					backgroundColor: 'primary.main',
 					color: 'primary.contrastText',
+					height: '.5rem'
 				}}
 			>
 			</Box>
@@ -38,6 +38,7 @@ const Footer = ({menu, contact, accessibilityEmail} : FooterProps) => {
 						width: '100%',
 						backgroundColor: 'secondary.light',
 						color: 'secondary.contrastText',
+						py: 4
 					}}
 			>
 				<Container>
