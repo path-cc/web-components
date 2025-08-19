@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { Card, CardContent, CardMedia, Typography, Chip, Link, Stack } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, Chip, Link, Stack, SxProps } from "@mui/material";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import { Presentation } from "src/types";
@@ -46,6 +46,7 @@ export interface PresentationCardProps {
   presentation: Presentation;
   maxDescriptionHeight?: string | number;
   href: string;
+  cardSx?: SxProps;
 }
 
 const PresentationCard = ({
@@ -60,6 +61,7 @@ const PresentationCard = ({
   },
   maxDescriptionHeight,
   href,
+  cardSx,
 }: PresentationCardProps) => {
   const [showGradient, setShowGradient] = useState(maxDescriptionHeight ? true : false);
   const descRef = useRef<HTMLDivElement>(null);
@@ -81,15 +83,18 @@ const PresentationCard = ({
   useEffect(updateGradientVisibility, [content, maxDescriptionHeight]);
   useLayoutEffect(() => {
     // called on component mount, adds event listener for resize
+    // ensure we only run this effect if maxDescriptionHeight is defined
+    if (!maxDescriptionHeight) return;
+
     window.addEventListener("resize", updateGradientVisibility);
     return () => window.removeEventListener("resize", updateGradientVisibility);
-  }, []);
+  }, [maxDescriptionHeight]);
 
   const thumbnailSrc = "src" in thumbnail ? thumbnail.src : `https://img.youtube.com/vi/${thumbnail.youtubeId}/hqdefault.jpg`;
   const thumbnailAlt = "alt" in thumbnail ? (thumbnail.alt ?? title) : title;
 
   return (
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={cardSx ?? {maxWidth: 400}}>
       <Link href={href} underline="none" color="inherit">
         <CardMedia
           component="img"

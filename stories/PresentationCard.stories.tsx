@@ -54,3 +54,35 @@ export const WithCustomThumbnail: Story = {
     maxDescriptionHeight: "4.5em",
   }
 };
+
+export const SquareImage: Story = {
+  args: {
+    presentation: {
+      ...defaultPresentation,
+      thumbnail: {
+        src: "https://placehold.co/1280x1280",
+        alt: "Custom Thumbnail",
+      },
+    },
+    href: "#",
+    maxDescriptionHeight: "4.5em",
+  }
+};
+
+export const WithCardSx: Story = {
+  args: {
+    presentation: defaultPresentation,
+    href: "#",
+    maxDescriptionHeight: "4.5em",
+    cardSx: {
+      maxWidth: 400,
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+      transition: "transform 0.2s",
+      '&:hover': {
+        transform: "scale(1.05)",
+      },
+    },
+  }
+};
