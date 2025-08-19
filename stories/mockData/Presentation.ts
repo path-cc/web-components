@@ -29,7 +29,7 @@ const defaultPresentation: Presentation = {
   event: "HTC25",
   date: "2025-06-04",
   description: markdownContent,
-  tags: ["Research Computing", "Workflow"],
+  keywords: ["Research Computing", "Workflow"],
   youtubeId: "3gubQ4-B2Kw",
   links: [{
     name: "Public slides",

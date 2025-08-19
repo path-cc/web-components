@@ -42,7 +42,7 @@ const CustomMarkdown = ({ children }: { children?: string | null }) => (
   </Markdown>
 );
 
-const Presentation = ({ title, presenter, event, date, description, youtubeId, tags = [], links = [] }: PresentationType) => {
+const Presentation = ({ title, presenter, event, date, description, youtubeId, keywords = [], links = [] }: PresentationType) => {
   const formattedDate = new Date(date).toLocaleString("en-US", {
     year: "numeric",
     month: "long",
@@ -78,13 +78,13 @@ const Presentation = ({ title, presenter, event, date, description, youtubeId, t
       </CustomMarkdown>
 
       <Stack direction="row" spacing={1} sx={{ mb: 1, flexWrap: "wrap" }}>
-        {tags.map((tag) => (
+        {keywords.map((keyword) => (
           <Chip
-            key={tag}
-            label={tag}
+            key={keyword}
+            label={keyword}
             size="small"
             sx={{
-              backgroundColor: getTagColor(tag),
+              backgroundColor: getTagColor(keyword),
               color: "#fff",
               borderRadius: "0.5rem",
               fontWeight: "bold"

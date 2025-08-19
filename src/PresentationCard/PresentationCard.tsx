@@ -56,7 +56,7 @@ const PresentationCard = ({
     event,
     date,
     description,
-    tags = [],
+    keywords = [],
     thumbnail,
     youtubeId,
   },
@@ -115,13 +115,13 @@ const PresentationCard = ({
           {event ? `${presenter} at ${event}` : presenter}
         </Typography>
         <Stack direction="row" spacing={1} sx={{ mb: 1, flexWrap: "wrap" }}>
-          {tags.map((tag) => (
+          {keywords.map((keyword) => (
             <Chip
-              key={tag}
-              label={tag}
+              key={keyword}
+              label={keyword}
               size="small"
               sx={{
-                backgroundColor: getTagColor(tag),
+                backgroundColor: getTagColor(keyword),
                 color: "#fff",
                 borderRadius: "0.5rem",
                 fontWeight: "bold"

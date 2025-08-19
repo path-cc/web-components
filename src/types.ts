@@ -49,7 +49,7 @@ export interface Presentation {
   event?: string;
   date: string;
   description: string;
-  tags?: string[];
+  keywords?: string[];
   links?: {
     name: string;
     value: string;
