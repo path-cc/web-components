@@ -8,4 +8,6 @@ export { default as ColorBar } from "./ColorBar";
 export { default as BigNumber, type BigNumberProps } from "./BigNumber";
 export { default as TimeBar } from "./TimeBar";
 export { default as StaffCard, type Staff } from "./StaffCard";
+export { default as Presentation } from "./Presentation";
+export { default as PresentationCard, type PresentationCardProps } from "./PresentationCard";
 export * from "./utils";

@@ -38,3 +38,27 @@ export interface BackendArticle extends Article {
   slug: string[];
   path: string;
 }
+
+/**
+ * Presentation Types
+ */
+
+export interface Presentation {
+  title: string;
+  presenter: string;
+  event?: string;
+  date: string;
+  content: string;
+  tags?: string[];
+  links?: {
+    name: string;
+    value: string;
+  }[];
+
+  thumbnail: {
+    src: string;
+    alt: string;
+  } | {
+    youtubeId: string;
+  };
+}
