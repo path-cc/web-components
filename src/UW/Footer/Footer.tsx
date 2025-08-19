@@ -1,3 +1,5 @@
+'use client';
+
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -21,13 +23,13 @@ const Footer = ({menu, contact, accessibilityEmail} : FooterProps) => {
 	return (
 		<Box
 			width={"100%"}
-			mt={4}
 		>
 			<Box
 				sx={{
 					width: '100%',
 					backgroundColor: 'primary.main',
 					color: 'primary.contrastText',
+					height: '.5rem'
 				}}
 			>
 			</Box>
@@ -36,23 +38,24 @@ const Footer = ({menu, contact, accessibilityEmail} : FooterProps) => {
 						width: '100%',
 						backgroundColor: 'secondary.light',
 						color: 'secondary.contrastText',
+						py: 4
 					}}
 			>
 				<Container>
 					<Grid container spacing={2} justifyContent={"space-evenly"}>
-						<Grid item>
+						<Grid>
 							<Box display={"flex"} alignItems={"center"}>
 								<Logo height={100} fill={theme.palette.secondary.contrastText} />
 							</Box>
 						</Grid>
 						{
 							menu.map((menuProps, i) => (
-								<Grid item key={i}>
+								<Grid key={i}>
 									<FooterMenu {...menuProps} />
 								</Grid>
 							))
 						}
-						<Grid item>
+						<Grid>
 							<ContactCard {...contact}/>
 						</Grid>
 					</Grid>

@@ -16,8 +16,8 @@ const ContactCard = ({email, phone, social }: ContactCardProps) => {
 			{email && <MenuLink href={`mailto:${email}`}>{email}</MenuLink>}
 			{phone && <MenuLink href={`tel:${phone}`}>{phone}</MenuLink>}
 			<Grid container>
-				{Object.entries(social).filter(([_, url]) => url !== undefined).map(([type, url]) => (
-					<Grid item>
+				{social && Object.entries(social).filter(([_, url]) => url !== undefined).map(([type, url]) => (
+					<Grid>
 						<SocialLink type={type as SocialType} url={url} key={type}/>
 					</Grid>
 				))}
