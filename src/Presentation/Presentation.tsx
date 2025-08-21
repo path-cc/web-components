@@ -95,17 +95,17 @@ const Presentation = ({ title, presenter, event, date, description, youtubeId, k
       
       {links.length !== 0 &&
         <>
-          <Typography variant="h4" mt={4}>
+          <Typography variant="h5" mt={4}>
             Associated Links
           </Typography>
 
-          <Box component="ul" mt={0}>
+          <Box paddingLeft="40px" mt={0} component="ul">
             {links.map((link) => (
-              <li key={link.name}>
+              <Box key={link.name} component="li">
                 <Link href={link.value} target="_blank">
                   {link.name}
                 </Link>
-              </li>
+              </Box>
             ))}
           </Box>
         </>
