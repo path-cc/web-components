@@ -1,14 +1,35 @@
-export { default as ArticleCard } from "./ArticleCard";
-export { default as HorizontalArticleCard } from "./HorizontalArticleCard";
-export { default as TopStyledBlock } from "./TopStyledBlock";
+
 export { default as Article } from "./Article";
-export { default as PieChart, type PieChartData } from "./PieChart";
-export { default as Table, type TableProps } from "./Table";
-export { default as ColorBar } from "./ColorBar";
+export * from "./Article";
+
+export { default as ArticleCard } from "./ArticleCard";
+export * from "./ArticleCard";
+
 export { default as BigNumber, type BigNumberProps } from "./BigNumber";
-export { default as TimeBar } from "./TimeBar";
+export * from "./BigNumber";
+
+export { default as ColorBar } from "./ColorBar";
+export * from "./ColorBar";
+
+export { default as HorizontalArticleCard } from "./HorizontalArticleCard";
+export * from "./HorizontalArticleCard";
+
+export { default as PieChart, type PieChartData } from "./PieChart";
+export * from "./PieChart";
+
+
 export { default as StaffCard, type Staff } from "./StaffCard";
-export { default as UWBanner } from "./UW/Banner";
-export { default as UWLogo } from "./UW/Logo";
-export { default as UWFooter } from "./UW/Footer";
-export * from "./utils";
+export * from "./StaffCard";
+
+export { default as Table, type TableProps } from "./Table";
+export * from "./Table";
+
+export { default as TimeBar } from "./TimeBar";
+export * from "./TimeBar";
+
+export { default as TopStyledBlock } from "./TopStyledBlock";
+export * from "./TopStyledBlock";
+
+export * from "./UW"
+
+export * from "./utils"
