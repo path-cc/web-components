@@ -26,9 +26,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Bundle project
-        run: npm run bundle
-
       - name: Publish to npm
         run: cd dist && npm run publish:increment
         env:
