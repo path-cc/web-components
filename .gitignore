@@ -2,4 +2,5 @@
 node_modules
 .idea
 storybook-static
-dist
+dist/*
+!dist/package.json

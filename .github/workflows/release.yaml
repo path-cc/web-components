@@ -30,7 +30,7 @@ jobs:
         run: npm run bundle
 
       - name: Publish to npm
-        run: npm run publish:increment
+        run: cd dist && npm run publish:increment
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
 
