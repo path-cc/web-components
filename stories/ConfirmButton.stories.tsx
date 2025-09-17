@@ -1,0 +1,41 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { IconButtonProps } from '@mui/material';
+import GarbageIcon from "@mui/icons-material/Delete"
+
+import ConfirmButton from '../src/ConfirmButton/ConfirmButton';
+
+const meta: Meta<typeof ConfirmButton> = {
+  title: 'Components/ConfirmButton',
+  component: ConfirmButton,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    'aria-label': 'confirm',
+    color: 'error',
+    disabled: false,
+		children: <GarbageIcon />,
+		onClick: () => alert('Confirmed!'),
+  } as IconButtonProps,
+};
+
+export const ExpandLeft: Story = {
+  render: (args) => (
+    <div style={{ position: 'fixed', top: '50%', right: 0, transform: 'translateY(-50%)', zIndex: 999, padding: 8, background: '#f8f8f8', border: '1px solid #ddd' }}>
+      <ConfirmButton {...args} />
+    </div>
+  ),
+  args: {
+    'aria-label': 'confirm',
+    color: 'error',
+    disabled: false,
+    children: <GarbageIcon />
+  } as IconButtonProps,
+};
