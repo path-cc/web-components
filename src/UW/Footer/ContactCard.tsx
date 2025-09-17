@@ -1,4 +1,3 @@
-
 import Grid from "@mui/material/Grid";
 import SocialLink, {SocialType} from "./SocialLink";
 import MenuLink from "./MenuLink";
@@ -16,8 +15,8 @@ const ContactCard = ({email, phone, social }: ContactCardProps) => {
 			{email && <MenuLink href={`mailto:${email}`}>{email}</MenuLink>}
 			{phone && <MenuLink href={`tel:${phone}`}>{phone}</MenuLink>}
 			<Grid container>
-				{social && Object.entries(social).filter(([_, url]) => url !== undefined).map(([type, url]) => (
-					<Grid>
+				{social && Object.entries(social).filter(([,url]) => url !== undefined).map(([type, url]) => (
+					<Grid key={type}>
 						<SocialLink type={type as SocialType} url={url} key={type}/>
 					</Grid>
 				))}
