@@ -22,7 +22,7 @@ export const Default: Story = {
     color: 'error',
     disabled: false,
 		children: <GarbageIcon />,
-		onClick: () => alert('Confirmed!'),
+		onConfirm: () => alert('Confirmed!'),
   } as IconButtonProps,
 };
 
@@ -36,6 +36,7 @@ export const ExpandLeft: Story = {
     'aria-label': 'confirm',
     color: 'error',
     disabled: false,
-    children: <GarbageIcon />
+    children: <GarbageIcon />,
+		onConfirm: () => alert('Confirmed!'),
   } as IconButtonProps,
 };

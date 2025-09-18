@@ -1,9 +1,11 @@
 import React, {useState, useRef, useEffect} from "react";
 import {Box, Button, IconButton, IconButtonProps, Collapse} from "@mui/material";
 
-type ConfirmButtonProps  = IconButtonProps
+type ConfirmButtonProps  = IconButtonProps & {
+	onConfirm?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
 
-const ConfirmButton = ({...props}: ConfirmButtonProps) => {
+const ConfirmButton = ({onConfirm, ...props}: ConfirmButtonProps) => {
 	const [askingForConfirmation, setAskingForConfirmation] = useState(false);
 	const [growDirection, setGrowDirection] = useState<'right' | 'left'>('right');
 	const iconButtonRef = useRef<HTMLButtonElement>(null);
@@ -39,7 +41,10 @@ const ConfirmButton = ({...props}: ConfirmButtonProps) => {
 				)
 		}}
 		>
-			<IconButton {...props} ref={iconButtonRef} onClick={() => setAskingForConfirmation(!askingForConfirmation)} />
+			<IconButton {...props} ref={iconButtonRef} onClick={(e) => {
+				setAskingForConfirmation(!askingForConfirmation);
+				if (props.onClick) props.onClick(e);
+			}} />
 			<Box
 				sx={growDirection === 'right'
 					? { position: 'absolute', top: 0, left: '100%' }
@@ -51,10 +56,7 @@ const ConfirmButton = ({...props}: ConfirmButtonProps) => {
 						variant={'contained'}
 						color={props?.color == 'default' ? 'primary' : props?.color}
 						size={props?.size}
-						onClick={(e) => {
-							props?.onClick && props.onClick(e)
-							setAskingForConfirmation(false)
-						}}
+						onClick={onConfirm}
 						ref={confirmButtonRef}
 					>
 						Confirm
