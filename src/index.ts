@@ -11,6 +11,9 @@ export * from "./BigNumber";
 export { default as ColorBar } from "./ColorBar";
 export * from "./ColorBar";
 
+export { default as ConfirmButton } from "./ConfirmButton";
+export * from "./ConfirmButton";
+
 export { default as HorizontalArticleCard } from "./HorizontalArticleCard";
 export * from "./HorizontalArticleCard";
 
