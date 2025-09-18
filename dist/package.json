@@ -1,6 +1,11 @@
 {
   "name": "@chtc/web-components",
   "version": "1.0.4",
+  "homepage": "https://path-cc.io/web-components/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/path-cc/web-components.git"
+  },
   "description": "CHTC Web Components",
   "main": "index.js",
   "types": "index.d.ts",
