@@ -46,10 +46,13 @@ const ConfirmButton = ({onConfirm, ...props}: ConfirmButtonProps) => {
 				if (props.onClick) props.onClick(e);
 			}} />
 			<Box
-				sx={growDirection === 'right'
-					? { position: 'absolute', top: 0, left: '100%' }
-					: { position: 'absolute', top: 0, right: '100%' }
-				}
+				sx={{
+					...(growDirection === 'right'
+						? { position: 'absolute', top: 0, left: '100%' }
+						: { position: 'absolute', top: 0, right: '100%' }
+					),
+					zIndex: 10,
+				}}
 			>
 				<Collapse in={askingForConfirmation} orientation={'horizontal'}>
 					<Button
