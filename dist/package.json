@@ -1,6 +1,6 @@
 {
   "name": "@chtc/web-components",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CHTC Web Components",
   "main": "index.js",
   "types": "index.d.ts",
