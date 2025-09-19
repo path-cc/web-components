@@ -13,7 +13,7 @@ export interface HeaderProps {
 	menuItems: (Omit<HeaderMenuProps, "setAnchor" | "anchorEl"> | HeaderLinkItem)[]
 }
 
-export const Header = ({icon, title, menuItems}: HeaderProps) => {
+const Header = ({icon, title, menuItems}: HeaderProps) => {
 
 	// Scroll watcher for opacity
 	let [scrolledTop, setScrolledTop] = useState(true);
@@ -51,3 +51,6 @@ export const Header = ({icon, title, menuItems}: HeaderProps) => {
 			</Box>
 	)
 }
+
+
+export default Header;

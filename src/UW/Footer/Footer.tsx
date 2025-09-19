@@ -11,8 +11,8 @@ import {useTheme} from "@mui/material";
 import FooterMenu, {FooterMenuProps} from "./FooterMenu";
 
 export interface FooterProps {
-	menu: FooterMenuProps[];
-	contact: ContactCardProps;
+	menu?: FooterMenuProps[];
+	contact?: ContactCardProps;
 	accessibilityEmail: string;
 }
 
@@ -48,16 +48,18 @@ const Footer = ({menu, contact, accessibilityEmail} : FooterProps) => {
 								<Logo height={100} fill={theme.palette.secondary.contrastText} />
 							</Box>
 						</Grid>
-						{
+						{ menu &&
 							menu.map((menuProps, i) => (
 								<Grid key={i}>
 									<FooterMenu {...menuProps} />
 								</Grid>
 							))
 						}
-						<Grid>
-							<ContactCard {...contact}/>
-						</Grid>
+						{ contact &&
+							<Grid>
+								<ContactCard {...contact}/>
+							</Grid>
+						}
 					</Grid>
 					<Box my={2}>
 						<Box textAlign={"center"}>

@@ -1,6 +1,7 @@
 import Link from "@mui/material/Link"
 import IconButton from "@mui/material/IconButton";
 import {Facebook, Twitter, Instagram, GitHub, LinkedIn, YouTube} from "@mui/icons-material";
+import {ReactNode} from "react";
 
 const SocialLink = ({type, url}: SocialLinkProps) => {
 	return (
@@ -12,7 +13,7 @@ const SocialLink = ({type, url}: SocialLinkProps) => {
 	)
 }
 
-const typeToIconMap: Record<SocialType, JSX.Element> = {
+const typeToIconMap: Record<SocialType, ReactNode> = {
 	"facebook": <Facebook />,
 	"x": <Twitter />,
 	"instagram": <Instagram />,

@@ -7,7 +7,7 @@
 import { useMemo } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { Line } from "react-chartjs-2";
-import "chartjs-adapter-date-fns";
+import "chartjs-adapter-luxon";
 import {
   CategoryScale,
   Chart as ChartJS,

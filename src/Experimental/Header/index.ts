@@ -23,3 +23,6 @@ export type HeaderLinkItem = {
 	value: string
 	type?: "icon" | "text"
 } & ComponentProps<typeof Link>
+
+export {default} from './Header';
+

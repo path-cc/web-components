@@ -4,6 +4,7 @@ import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
 import {BackendArticle} from '../types'
+import markdownComponents from "../markdownComponents";
 
 const Article = ({article}: {article: BackendArticle}) => {
 	return (
@@ -21,17 +22,7 @@ const Article = ({article}: {article: BackendArticle}) => {
 					</Box>
 					<Markdown
 							rehypePlugins={[rehypeRaw]}
-							components={{
-								h1: ({children}) => <Typography variant={"h1"}>{children}</Typography>,
-								h2: ({children}) => <Typography variant={"h1"}>{children}</Typography>,
-								h3: ({children}) => <Typography variant={"h1"}>{children}</Typography>,
-								h4: ({children}) => <Typography variant={"h1"}>{children}</Typography>,
-								h5: ({children}) => <Typography variant={"h1"}>{children}</Typography>,
-								h6: ({children}) => <Typography variant={"h1"}>{children}</Typography>,
-								p: ({children}) => <Typography variant={"body1"}>{children}</Typography>,
-								a: ({children, href}) => <a style={{color: "#0885ff"}} href={href}>{children}</a>,
-								img: ({src, alt}) => <img style={{maxWidth: "100%", height: "auto"}} src={src} alt={alt} />,
-							}}
+							components={markdownComponents}
 					>
 						{article.content}
 					</Markdown>
