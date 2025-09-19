@@ -35,7 +35,7 @@ export const SmallWithMaxHeight: Story = {
   args: {
     presentation: {
       ...defaultPresentation,
-      content: "This is a short description.",
+      description: "This is a short description.",
     },
     href: "#",
   }

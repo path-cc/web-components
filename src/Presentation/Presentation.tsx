@@ -2,6 +2,7 @@ import { Box, Chip, Container, Link, Stack, Typography } from "@mui/material";
 import Markdown from "react-markdown";
 import Balancer from "react-wrap-balancer";
 import rehypeRaw from "rehype-raw";
+import markdownComponents from "src/markdownComponents";
 import { Presentation as PresentationType } from "src/types";
 
 function getStringHash(value: string): number {
@@ -22,25 +23,6 @@ function getTagColor(tag: string): string {
 
   return `hsl(${hue}, 70%, 40%)`;
 }
-
-const CustomMarkdown = ({ children }: { children?: string | null }) => (
-  <Markdown
-    rehypePlugins={[rehypeRaw]}
-    components={{
-      h1: ({ children }) => <Typography variant={"h3"}>{children}</Typography>,
-      h2: ({ children }) => <Typography variant={"h4"}>{children}</Typography>,
-      h3: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      h4: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      h5: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      h6: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      p: ({ children }) => <Typography variant={"body1"}>{children}</Typography>,
-      a: ({ children, href }) => <a style={{ color: "#0885ff" }} href={href}>{children}</a>,
-      img: ({ src, alt }) => <img style={{ maxWidth: "100%", height: "auto" }} src={src} alt={alt} />,
-    }}
-  >
-    {children}
-  </Markdown>
-);
 
 const Presentation = ({ title, presenter, event, date, description, youtubeId, keywords = [], links = [] }: PresentationType) => {
   const formattedDate = new Date(date).toLocaleString("en-US", {
@@ -73,9 +55,12 @@ const Presentation = ({ title, presenter, event, date, description, youtubeId, k
         </Box>
       )}
 
-      <CustomMarkdown>
+      <Markdown
+          rehypePlugins={[rehypeRaw]}
+          components={markdownComponents}
+      >
         {description}
-      </CustomMarkdown>
+      </Markdown>
 
       <Stack direction="row" spacing={1} sx={{ mb: 1, flexWrap: "wrap" }}>
         {keywords.map((keyword) => (

@@ -1,7 +1,17 @@
-import { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { Card, CardContent, CardMedia, Typography, Chip, Link, Stack, SxProps } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Chip,
+  Link,
+  Stack,
+  SxProps,
+  Typography,
+} from "@mui/material";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import { markdownSmallHeaderComponents } from "src/markdownComponents/markdownComponents";
 import { Presentation } from "src/types";
 
 function getStringHash(value: string): number {
@@ -22,25 +32,6 @@ function getTagColor(tag: string): string {
 
   return `hsl(${hue}, 70%, 40%)`;
 }
-
-const CustomMarkdown = ({ children }: { children?: string | null }) => (
-  <Markdown
-    rehypePlugins={[rehypeRaw]}
-    components={{
-      h1: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      h2: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      h3: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      h4: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      h5: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      h6: ({ children }) => <Typography variant={"h5"}>{children}</Typography>,
-      p: ({ children }) => <Typography variant={"body2"}>{children}</Typography>,
-      a: ({ children, href }) => <a style={{ color: "#0885ff" }} href={href}>{children}</a>,
-      img: ({ src, alt }) => <img style={{ maxWidth: "100%", height: "auto" }} src={src} alt={alt} />,
-    }}
-  >
-    {children}
-  </Markdown>
-);
 
 export interface PresentationCardProps {
   presentation: Presentation;
@@ -64,7 +55,9 @@ const PresentationCard = ({
   href,
   cardSx,
 }: PresentationCardProps) => {
-  const [showGradient, setShowGradient] = useState(maxDescriptionHeight ? true : false);
+  const [showGradient, setShowGradient] = useState(
+    maxDescriptionHeight ? true : false
+  );
   const descRef = useRef<HTMLDivElement>(null);
 
   const formattedDate = new Date(date).toLocaleString("en-US", {
@@ -91,11 +84,12 @@ const PresentationCard = ({
     return () => window.removeEventListener("resize", updateGradientVisibility);
   }, [maxDescriptionHeight]);
 
-  const thumbnailSrc = thumbnail?.src ?? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
+  const thumbnailSrc =
+    thumbnail?.src ?? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
   const thumbnailAlt = thumbnail?.alt ?? title;
 
   return (
-    <Card sx={cardSx ?? {maxWidth: 400}}>
+    <Card sx={cardSx ?? { maxWidth: 400 }}>
       <Link href={href} underline="none" color="inherit">
         <CardMedia
           component="img"
@@ -124,25 +118,32 @@ const PresentationCard = ({
                 backgroundColor: getTagColor(keyword),
                 color: "#fff",
                 borderRadius: "0.5rem",
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             />
           ))}
         </Stack>
         <div
           ref={descRef}
-          style={(showGradient && maxDescriptionHeight) ? {
-            maxHeight: maxDescriptionHeight,
-            overflow: "hidden",
-            position: "relative",
-            userSelect: showGradient ? "none" : "auto",
-            cursor: showGradient ? "pointer" : "default",
-          } : { position: "relative" }}
+          style={
+            showGradient && maxDescriptionHeight
+              ? {
+                  maxHeight: maxDescriptionHeight,
+                  overflow: "hidden",
+                  position: "relative",
+                  userSelect: showGradient ? "none" : "auto",
+                  cursor: showGradient ? "pointer" : "default",
+                }
+              : { position: "relative" }
+          }
           onClick={() => setShowGradient(false)}
         >
-          <CustomMarkdown>
+          <Markdown
+							rehypePlugins={[rehypeRaw]}
+							components={markdownSmallHeaderComponents}
+					>
             {description}
-          </CustomMarkdown>
+          </Markdown>
           {showGradient && (
             <div
               className="gradient-overlay"
@@ -153,7 +154,8 @@ const PresentationCard = ({
                 bottom: 0,
                 height: "2.2em",
                 pointerEvents: "none",
-                background: "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.95) 80%)",
+                background:
+                  "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.95) 80%)",
                 display: showGradient ? "block" : "none",
               }}
             />
