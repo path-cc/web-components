@@ -8,7 +8,7 @@ export type ConfirmButtonProps  = IconButtonProps & {
 	onConfirm?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const ConfirmButton = ({onConfirm, confirmText = 'Confirm', ...props}: ConfirmButtonProps) => {
+const ConfirmButton = ({onConfirm, confirmNode = 'Confirm', ...props}: ConfirmButtonProps) => {
 
 	const theme = useTheme();
 	const [askingForConfirmation, setAskingForConfirmation] = useState(false);
