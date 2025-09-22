@@ -26,6 +26,18 @@ export const Default: Story = {
   } as IconButtonProps,
 };
 
+export const SpecificNode: Story = {
+	args: {
+		'aria-label': 'confirm',
+		color: 'error',
+		disabled: false,
+		children: <GarbageIcon />,
+		confirmNode: "Delete",
+		onConfirm: () => alert('Confirmed!'),
+	} as IconButtonProps,
+};
+
+
 export const ExpandLeft: Story = {
   render: (args) => (
     <div style={{ position: 'fixed', top: '50%', right: 0, transform: 'translateY(-50%)', zIndex: 999, padding: 8, background: '#f8f8f8', border: '1px solid #ddd' }}>
