@@ -4,7 +4,7 @@ import { Theme } from "@mui/material/styles"
 
 export type ConfirmButtonProps  = IconButtonProps & {
 	color: keyof Theme['palette'];
-	confirmText?: ReactNode;
+	confirmNode?: ReactNode;
 	onConfirm?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
@@ -81,7 +81,7 @@ const ConfirmButton = ({onConfirm, confirmText = 'Confirm', ...props}: ConfirmBu
 								onClick={onConfirm}
 								ref={confirmButtonRef}
 							>
-								{confirmText}
+								{confirmNode}
 							</Button>
 						</Collapse>
 					</Box>
