@@ -11,7 +11,7 @@ import {
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import { markdownSmallHeaderComponents } from "src/markdownComponents/markdownComponents";
+import smallHeaderComponents from "src/smallHeaderComponents/smallHeaderComponents";
 import { Presentation } from "src/types";
 
 function getStringHash(value: string): number {
@@ -140,7 +140,7 @@ const PresentationCard = ({
         >
           <Markdown
 							rehypePlugins={[rehypeRaw]}
-							components={markdownSmallHeaderComponents}
+							components={smallHeaderComponents}
 					>
             {description}
           </Markdown>
