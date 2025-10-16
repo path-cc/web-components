@@ -33,6 +33,12 @@ export * from "./TimeBar";
 export { default as TopStyledBlock } from "./TopStyledBlock";
 export * from "./TopStyledBlock";
 
+export { default as Presentation } from "./Presentation";
+export * from "./Presentation";
+
+export { default as PresentationCard } from "./PresentationCard";
+export * from "./PresentationCard";
+
 export * from "./UW"
 
 export * from "./utils"
