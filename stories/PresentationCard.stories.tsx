@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { PresentationCard } from '../src';
-import defaultPresentation from './mockData/Presentation';
+import { PresentationCard } from "../src";
+import defaultPresentation from "./mockData/Presentation";
 
 const meta: Meta<typeof PresentationCard> = {
   title: "Components/Presentation/PresentationCard",
@@ -21,14 +21,14 @@ export const Default: Story = {
   args: {
     presentation: defaultPresentation,
     href: "#",
-  }
+  },
 };
 
 export const LargeWithMaxHeight: Story = {
   args: {
     ...Default.args,
     maxDescriptionHeight: "4.5em",
-  }
+  },
 };
 
 export const SmallWithMaxHeight: Story = {
@@ -38,7 +38,7 @@ export const SmallWithMaxHeight: Story = {
       description: "This is a short description.",
     },
     href: "#",
-  }
+  },
 };
 
 export const CustomThumbnail: Story = {
@@ -52,7 +52,7 @@ export const CustomThumbnail: Story = {
     },
     href: "#",
     maxDescriptionHeight: "4.5em",
-  }
+  },
 };
 
 export const SquareImage: Story = {
@@ -66,7 +66,7 @@ export const SquareImage: Story = {
     },
     href: "#",
     maxDescriptionHeight: "4.5em",
-  }
+  },
 };
 
 export const CardSx: Story = {
@@ -80,9 +80,9 @@ export const CardSx: Story = {
       borderRadius: "8px",
       boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
       transition: "transform 0.2s",
-      '&:hover': {
+      "&:hover": {
         transform: "scale(1.05)",
       },
     },
-  }
+  },
 };

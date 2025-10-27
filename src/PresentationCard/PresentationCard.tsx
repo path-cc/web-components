@@ -11,8 +11,8 @@ import {
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import smallHeaderComponents from "src/smallHeaderComponents/smallHeaderComponents";
-import { Presentation } from "src/types";
+import smallHeaderComponents from "../smallHeaderComponents/smallHeaderComponents";
+import { Presentation } from "../types";
 
 function getStringHash(value: string): number {
   // Simple hash function to generate a number from the tag string
@@ -139,9 +139,9 @@ const PresentationCard = ({
           onClick={() => setShowGradient(false)}
         >
           <Markdown
-							rehypePlugins={[rehypeRaw]}
-							components={smallHeaderComponents}
-					>
+            rehypePlugins={[rehypeRaw]}
+            components={smallHeaderComponents}
+          >
             {description}
           </Markdown>
           {showGradient && (
