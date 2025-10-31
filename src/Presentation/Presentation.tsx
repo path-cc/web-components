@@ -78,9 +78,11 @@ const Presentation = ({
           </Box>
         )}
 
-        <Markdown rehypePlugins={[rehypeRaw]} components={markdownComponents}>
-          {description}
-        </Markdown>
+				{ description && (
+					<Markdown rehypePlugins={[rehypeRaw]} components={markdownComponents}>
+						{description}
+					</Markdown>
+				)}
 
         <Stack direction="row" spacing={1} sx={{ mb: 1, flexWrap: "wrap" }}>
           {keywords.map((keyword) => (
